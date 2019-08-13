@@ -114,4 +114,4 @@ kubectl exec -it $(kubectl get pod -n external -l app=squid -o jsonpath={.items.
 - You must not create service entries for the external services you access through the external proxy, like wikipedia.org
 - This is because from Istio’s point of view the requests are sent to the external proxy only
 - Istio is not aware of the fact that the external proxy forwards the requests further.
-- You should add k8s network policies to influence non-istio traffic in the cluster
+- You should add k8s network policies to influence non-istio traffic in the cluster using the link https://istio.io/docs/tasks/traffic-management/egress/egress-gateway/#apply-kubernetes-network-policies
