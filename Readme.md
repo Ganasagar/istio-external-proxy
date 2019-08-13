@@ -1,7 +1,4 @@
-# Istio-mtls-install
-
-# Setup Istio with MKE
-
+# Configure Istio-egress-traffic with external proxy 
 
 The Configure an Egress Gateway example shows how to direct traffic to external services from your mesh via an Istio edge component called Egress Gateway. However, some cases require an external, legacy (non-Istio) HTTPS proxy to access external services. For example, your company may already have such a proxy in place and all the applications within the organization may be required to direct their traffic through it.
 
