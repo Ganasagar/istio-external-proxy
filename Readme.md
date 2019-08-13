@@ -9,7 +9,7 @@ The Configure an Egress Gateway example shows how to direct traffic to external 
 
 
 ### Test access to https site through Corporate proxy and non-istio-namespace
-Create an external namespace and sleep pods in it so that we can test both external and mesh 
+1. Create an external namespace and a sleep pods in it so that we can validate traffic external to istio can access world using Corporate proxy  
 ```
 kubectl create namespace external
 
@@ -17,14 +17,14 @@ kubectl apply -n external -f samples/sleep/sleep.yaml
 
 ```
 
-Create vars for proxy IP and proxy Port of the corporate proxy
+2. Create vars for proxy IP and proxy Port of the corporate proxy
 ```bash
 export PROXY_IP=<IP_ADDRESS_OF_PROXY>
 
 export PROXY_PORT=<PROXY_PORT>
 ```
 
-Make a call to the outside world using the corporate proxy from a non-istio enabled namespace.
+3. Make a call to the outside world using the corporate proxy from a non-istio enabled namespace.
 Note: we use proxy info as flags for curl command.
 ```bash
 kubectl exec -it $(kubectl get pod -n external -l app=sleep -o jsonpath={.items..metadata.name}) -n external -- sh -c "HTTPS_PROXY=$PROXY_IP:$PROXY_PORT curl https://en.wikipedia.org/wiki/Main_Page" | grep -o "<title>.*</title>"
