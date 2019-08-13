@@ -5,6 +5,15 @@ The Configure an Egress Gateway example shows how to direct traffic to external 
 - This task asssumes that you are have istio 1.12.2 up and running with istio-enalbed for default namespace
 
 
+
+### Desired features for secure operations 
+- Support of TLS with SNI or of TLS origination.
+- Monitor SNI and the source workload of every egress access.
+- Define and enforce policies per cluster.
+- Define and enforce policies per source, Kubernetes-aware.
+- Prevent tampering.
+- Traffic control is transparent to the applications.
+
 ### Test access to https site through Corporate proxy and non-istio-namespace
 1. Create an external namespace and a sleep pods in it so that we can validate traffic external to istio can access world using Corporate proxy  
 ```
