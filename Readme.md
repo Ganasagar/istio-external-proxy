@@ -120,4 +120,7 @@ kubectl exec -it $(kubectl get pod -n external -l app=squid -o jsonpath={.items.
 - You must not create service entries for the external services you access through the external proxy, like wikipedia.org
 - This is because from Istio’s point of view the requests are sent to the external proxy only
 - Istio is not aware of the fact that the external proxy forwards the requests further.
+- Istio's pilot does secure naming which creates a 1:1 mapping for services that should access each other. 
 - You should add k8s network policies to influence non-istio traffic in the cluster using the link https://istio.io/docs/tasks/traffic-management/egress/egress-gateway/#apply-kubernetes-network-policies
+- The biggest caveat is: By default Istio-Egress gateway only exposes the ports that were explicity opened. If once needs to wanna get traffic INGRESS or EGRESS those ports should be open when installing ISTIO. Without the ports being opened you would see 404 since Egress-gateway would not know where to forward the traffic from. 
+
